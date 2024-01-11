@@ -13,7 +13,7 @@ class Solution(object):
             matrix[0][n-i] = temp
         for i in range(n+1):
             print(matrix[i])"""
-        n = len(matrix)
+        """n = len(matrix)
 
         # Transpose the matrix
         for i in range(n):
@@ -24,7 +24,26 @@ class Solution(object):
         for i in range(n):
             matrix[i] = matrix[i][::-1]
 
-        return matrix
+        return matrix"""
+        n = len(matrix)
+        for layer in range(n // 2):
+            first, last = layer, n - layer - 1
+            for i in range(first, last):
+                # Save top
+                top = matrix[layer][i]
+
+                # Left to top
+                matrix[layer][i] = matrix[-i - 1][layer]
+
+                # Bottom to left
+                matrix[-i - 1][layer] = matrix[-layer - 1][-i - 1]
+
+                # Right to bottom
+                matrix[-layer - 1][-i - 1] = matrix[i][-layer - 1]
+
+                # Top to right
+                matrix[i][-layer - 1] = top
+
         
         
             
