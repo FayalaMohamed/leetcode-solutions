@@ -6,7 +6,7 @@ class Solution:
         def dfs(i, total):
             nonlocal cur
             if total == target:
-                res.append(cur.copy())
+                res.append(cur[:])
                 return
             if i>len(candidates)-1 or total > target:
                 return
