@@ -3,20 +3,22 @@ class Solution:
         candidates.sort()
         res = []
         cur = []
-        def dfs(i, total):
+        def dfs(pos, total):
             nonlocal cur
             if total == target:
                 res.append(cur[:])
                 return
-            if i>len(candidates)-1 or total > target:
+            if pos>len(candidates)-1 or total > target:
                 return
             
-            cur.append(candidates[i])
-            dfs(i+1, total + candidates[i])
-            while i < len(candidates)-1 and candidates[i] == candidates[i+1]:
-                i += 1
-            cur.pop()
-            dfs(i+1, total)
+            prev = -1
+            for i in range(pos, len(candidates)):
+                if candidates[i] == prev:
+                    continue
+                cur.append(candidates[i])
+                prev = candidates[i]
+                dfs(i+1, total+candidates[i])
+                cur.pop()
             
         dfs(0,0)
         return res
