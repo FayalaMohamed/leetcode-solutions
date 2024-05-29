@@ -6,8 +6,8 @@ class Solution(object):
         """
         dp = [1] * len(nums)
 
-        for i in range(len(nums)):
-            for j in range(0,i):
-                dp[i] = max(dp[j]+1, dp[i]) if nums[i] > nums[j] else dp[i]
+        for i in range(len(nums)-1,-1,-1):
+            for j in range(i+1,len(nums)):
+                dp[i] = max(dp[j]+1, dp[i]) if nums[i] < nums[j] else dp[i]
         
         return max(dp)
