@@ -1,15 +1,9 @@
 class Solution:
     def rob(self, nums: List[int]) -> int:
-        match len(nums):
-            case 0:
-                return 0
-            case 1:
-                return nums[0]
-
-        nums[1] =  max(nums[0], nums[1])
+        rob1, rob2 = 0, 0
+        for n in nums:
+            temp = max(n+rob1, rob2)
+            rob1 = rob2
+            rob2 = temp
                 
-        for i in range(2, len(nums)):
-            nums[i] = max(nums[i-2]+nums[i], nums[i-1])
-        
-        
-        return nums[-1]
+        return rob2
