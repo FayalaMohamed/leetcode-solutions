@@ -10,3 +10,4 @@ class Solution:
             if i+1 < n and (s[i]=="1" or s[i]=="2" and s[i+1]<="6"):
                 dp[i] += dp[i+2]
         return dp[0]
+        
