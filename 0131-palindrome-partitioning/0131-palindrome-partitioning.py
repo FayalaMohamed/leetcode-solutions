@@ -18,7 +18,6 @@ class Solution:
                 return
 
             for j in range(i, len(s)):
-                print(s[i:j+1])
                 if isPalindrome(s[i:j+1]):
                     part.append(s[i:j+1])
                     backtrack(j+1)
